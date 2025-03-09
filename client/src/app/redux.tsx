@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
   TypedUseSelectorHook,
@@ -82,12 +82,8 @@ export default function StoreProvider({
 }) {
   const storeRef = useRef<AppStore | null>(null);
 
-
-
   // const [store, setStore] = useState<AppStore | null>(null);
   // const persistorRef = useRef<any>(null);
-
-
 
   // useEffect(() => {
   //   const initializedStore = makeStore();
@@ -95,9 +91,7 @@ export default function StoreProvider({
   //   const initializedPersistor = persistStore(initializedStore);
   //   setStore(initializedStore);
   //   persistorRef.current = initializedPersistor;
-  // }, []); 
-
-
+  // }, []);
 
   if (!storeRef.current) {
     storeRef.current = makeStore();

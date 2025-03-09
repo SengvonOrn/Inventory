@@ -10,33 +10,33 @@ export interface User {
 
 export interface Product {
   productId: string;
-  name: String;
+  name: string;
   price: number;
   rating?: number;
   stockQuantity: number;
 }
 
 export interface NewProduct {
-  name: String;
+  name: string;
   price: number;
   rating?: number;
   stockQuantity: number;
 }
 export interface SalesSummary {
-  salesSummaryId: String;
+  salesSummaryId: string;
   totalValue: number;
   changePercentage?: number;
   date: string;
 }
 export interface PurchaseSummary {
-  purchaseSummaryId: String;
+  purchaseSummaryId: string;
   totalPurchased: number;
   changePercentage?: number;
   date: string;
 }
 
 export interface ExpenseSummary {
-  expenseSummaryId: String;
+  expenseSummaryId: string;
   totalExpenses: number;
   date: string;
 }

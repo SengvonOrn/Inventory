@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
 import {
   Archive,
-  Icon,
   Layout,
   LucideIcon,
   Menu,

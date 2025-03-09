@@ -1,5 +1,5 @@
 "use client";
-import { useGetProductsQuery, useGetUsersQuery } from "@/state/api";
+import {useGetUsersQuery } from "@/state/api";
 import React from "react";
 import Header from "../(components)/Header";
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
