@@ -9,11 +9,7 @@ const columns: GridColDef[] = [
       {field: 'price', headerName: 'Price', type: 'number', valueGetter: (value, row)=> `$ ${row.price}` ,  width: 110 },
       {field: 'rating', headerName: 'Rating', type: 'number', valueGetter: (value, row)=> row.rating ? row.rating : "N/A" ,  width: 110 },
       {field: 'stockQuantity', headerName: 'Stock Quantity', type: 'number',  width: 150 },
-     
-   
     ];
-
-
 const Inventrory = () => {
   const { data: products, isError, isLoading } = useGetProductsQuery();
   if (isLoading) {
@@ -36,7 +32,7 @@ const Inventrory = () => {
         columns={columns}
         getRowId={(row)=> row.productId}
         checkboxSelection
-        className="bg-white shadow rounded-lg border border-gray-200  mt-5 !text-gray-700"
+        className="bg-white shadow rounded-lg border border-gray-200  mt-5 !text-gray-500"
       />
     </div>
   );

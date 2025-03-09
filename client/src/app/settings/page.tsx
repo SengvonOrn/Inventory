@@ -1,6 +1,8 @@
 "use client";
 import Header from "@/app/(components)/Header";
 import React, { useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/app/redux";
+import { setDarkMode, setIsSidebarCollapsed } from "@/state";
 
 type UserSettings = {
   label: string;
@@ -24,6 +26,19 @@ const Settings = () => {
     settingsCopy[index].value = !settingsCopy[index].value as boolean;
     setUserSettings(settingsCopy);
   };
+
+  const dispatch = useAppDispatch();
+  const isSidebarColleapsed = useAppSelector(
+    (state) => state.global.isSidebarCollapsed
+  );
+  const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
+  const toggleSidebar = () => {
+    dispatch(setIsSidebarCollapsed(!isSidebarColleapsed));
+  };
+  const toggleDarkMode = () => {
+    dispatch(setDarkMode(!isDarkMode));
+  };
+
   return (
     <div className="w-full">
       <Header name="Setting" />
@@ -52,13 +67,24 @@ const Settings = () => {
                         checked={setting.value as boolean}
                         onChange={() => handleToggleChange(index)}
                       />
-                      <div
+                      {setting.type === "toggle" && setting.label === "Dark Mode"? (
+                        <div
+                          onClick={toggleDarkMode}
+                          className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-blue-400 peer-focus:ring-4 
+                             transition peer-checked:after:translate-x-full peer-checked:after:border-white 
+                             after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white 
+                             after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all
+                             peer-checked:bg-blue-600"
+                        ></div>
+                      ) : (
+                        <div
                         className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-blue-400 peer-focus:ring-4 
-                        transition peer-checked:after:translate-x-full peer-checked:after:border-white 
-                        after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white 
-                        after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all
-                        peer-checked:bg-blue-600"
+                           transition peer-checked:after:translate-x-full peer-checked:after:border-white 
+                           after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white 
+                           after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all
+                           peer-checked:bg-blue-600"
                       ></div>
+                      )}
                     </label>
                   ) : (
                     <input
@@ -76,7 +102,6 @@ const Settings = () => {
               </tr>
             ))}
           </tbody>
-
         </table>
       </div>
     </div>

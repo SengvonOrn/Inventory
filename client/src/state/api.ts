@@ -1,7 +1,4 @@
-import {
-  createApi,
-  fetchBaseQuery,
-} from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export interface User {
   userId: string;
   name: string;
@@ -56,7 +53,11 @@ export interface DashboardMetrics {
 }
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || "https://inventory-server-jx8b.onrender.com" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl:
+      process.env.NEXT_PUBLIC_API_BASE_URL ||
+      "https://inventory-server-jx8b.onrender.com",
+  }),
   reducerPath: "api",
   tagTypes: ["DashboardMetrics", "Products", "Users", "Expenses"],
   endpoints: (build) => ({
@@ -67,11 +68,11 @@ export const api = createApi({
     getProducts: build.query<Product[], string | void>({
       query: (search) => ({
         url: "/products",
-        params: search ? { search} : {},
+        params: search ? { search } : {},
       }),
       providesTags: ["Products"],
     }),
-    createProduct: build.mutation<Product, NewProduct> ({
+    createProduct: build.mutation<Product, NewProduct>({
       query: (newProduct) => ({
         url: "/products",
         method: "POST",
@@ -90,4 +91,10 @@ export const api = createApi({
   }),
 });
 
-export const { useGetDashboardMetricsQuery, useGetProductsQuery, useCreateProductMutation, useGetUsersQuery, useGetExpensesByCategoryQuery  } = api;
+export const {
+  useGetDashboardMetricsQuery,
+  useGetProductsQuery,
+  useCreateProductMutation,
+  useGetUsersQuery,
+  useGetExpensesByCategoryQuery,
+} = api;

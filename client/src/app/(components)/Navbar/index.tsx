@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
-import { Bell, Menu, Moon, Settings, Sun } from "lucide-react";
+import { Bell,  Menu, Moon, Settings, Sun } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setDarkMode, setIsSidebarCollapsed } from "@/state";
+import img from "@/../public/seng (1).png"
 
 function Navbar() {
   const dispatch = useAppDispatch();
@@ -65,7 +67,13 @@ function Navbar() {
           <hr
             className={`w-0 h-7 border border-solid boder-l border-gray-300 mx-3`}
           />
-          <div className={`w-9 h-9`}>image</div>
+          <Image
+            src={img}
+            alt="edstock-logo"
+            width={27}
+            height={27}
+            className="rounded w-8"
+          />
           <span className={`font-semibold`}>Ed Roh</span>
         </div>
         <Link href="/settings">

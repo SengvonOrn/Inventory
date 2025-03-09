@@ -30,7 +30,7 @@ const Users = () => {
         columns={columns}
         getRowId={(row)=> row.userId}
         checkboxSelection
-        className="bg-white shadow rounded-lg border border-gray-200  mt-5 !text-gray-700"
+        className="bg-white shadow rounded-lg border border-gray-200  mt-5 !text-gray-500"
       />
     </div>
   );
