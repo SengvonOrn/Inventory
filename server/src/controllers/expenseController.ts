@@ -15,7 +15,7 @@ export const getExpensesBycatetgory = async (
       }
     );
     const expenseByCategorySummary = expenseByCategorySummaryRaw.map(
-      (item) => ({
+      (item: any) => ({
         ...item,
         amount: item.amount.toLocaleString(),
       })
