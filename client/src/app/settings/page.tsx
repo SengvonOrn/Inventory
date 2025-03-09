@@ -2,8 +2,7 @@
 import Header from "@/app/(components)/Header";
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
-import { setDarkMode, setIsSidebarCollapsed } from "@/state";
-
+import { setDarkMode } from "@/state";
 type UserSettings = {
   label: string;
   value: string | boolean;
@@ -28,13 +27,7 @@ const Settings = () => {
   };
 
   const dispatch = useAppDispatch();
-  const isSidebarColleapsed = useAppSelector(
-    (state) => state.global.isSidebarCollapsed
-  );
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
-  const toggleSidebar = () => {
-    dispatch(setIsSidebarCollapsed(!isSidebarColleapsed));
-  };
   const toggleDarkMode = () => {
     dispatch(setDarkMode(!isDarkMode));
   };
