@@ -27,16 +27,21 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 const createNoopStorage = () => {
   return {
     getItem(_key: string) {
+      console.log(`Getting item with key: ${_key}`);
       return Promise.resolve(null);
     },
     setItem(_key: string, value: string) {
+      console.log(`Setting item with key: ${_key} and value: ${value}`);
       return Promise.resolve(value);
     },
     removeItem(_key: string) {
+      console.log(`Removing item with key: ${_key}`);
       return Promise.resolve();
     },
   };
 };
+
+
 
 const storage =
   typeof window === "undefined"
